@@ -122,6 +122,17 @@ const toastifyAddCart = () =>{
       }).showToast();
 }
 
+const toastifyDeleteCart = () =>{
+    Toastify({
+        text: "🗑 Producto borrado correctamente!",
+        className: "info",
+        gravity: "bottom",
+        style: {
+            background: "background: linear-gradient(90deg, rgba(45,34,238,1) 23%, rgba(0,212,255,1) 92%)"
+        }
+      }).showToast();
+}
+
 const eventoBoton = () =>{  
     let botones = document.getElementsByClassName('buy-button');
     for (const boton of botones) {
@@ -130,7 +141,7 @@ const eventoBoton = () =>{
                 if(products[i].id == this.id){
                     let exits = cart.find(producto=>producto.id == this.id);
                     if(exits){
-                        exits.addCantidad();
+                        exits.cantidad++;
                         products[i].stock--;
                         if(products[i].stock == 0){
                             sinStock(products[i].id);
@@ -155,19 +166,39 @@ const eventoBoton = () =>{
     }
 }
 
+const botonBorrarProductoCarro = ()=>{
+    let botones = document.getElementsByClassName('trash-cart');
+    for (const boton of botones) {
+        boton.addEventListener('click',function(){
+            let borrado = cart.filter(prod => prod.id != this.id);
+            cart = borrado;
+            guardarLocal("carritoProductos",JSON.stringify(cart));
+            toastifyDeleteCart();
+            carritoHTML(cart);
+        })
+    }
+}
+
+const subTotal = (precio,cantidad) =>{
+    return precio*cantidad;
+}
+
 const carritoHTML = (lista) =>{
     cantidad_productos.innerHTML = lista.length;
     productos_carrito.innerHTML = "";
     for (const producto of lista) {
         let prod = document.createElement('div');
+        prod.classList.add('div-product-cart');
         prod.innerHTML = `<h6>${producto.nombre} x${producto.cantidad}</h6>
-        <h6>Precio unitario: $${producto.precio}  <span class="badge bg-secondary">SubTotal: $${producto.subTotal()}</span></h6>
+        <h6 class="h6-cart">Precio unitario: $${producto.precio}  <span class="badge bg-secondary">SubTotal: $${subTotal(producto.precio,producto.cantidad)}</span></h6>
+        <button id="${producto.id}" class="trash-cart" type="button"><i class="fa-solid fa-trash"></i></button>
         `
         productos_carrito.append(prod);
     }
+    botonBorrarProductoCarro();
     let total = 0;
     for(let i = 0;i<lista.length;i++){
-        total = total + lista[i].subTotal();
+        total = total + subTotal(lista[i].precio,lista[i].cantidad);
     }
     totalCarro.innerHTML = `Total: $${total}`
 }

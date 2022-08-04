@@ -6,7 +6,8 @@ let filtrar = document.getElementById('filter-product');
 let ingreso = document.getElementById('tipo_ingreso');
 let cantidad_productos = document.getElementById('cantidad-carrito');
 let productos_carrito = document.getElementById('productos-carrito');
-let totalCarro = document.getElementById('total-carrito')
+let totalCarro = document.getElementById('total-carrito');
+let limpiarCarro = document.getElementById('limpiar-carro');
 
 form.addEventListener('submit',cargarProducto);
 
@@ -20,6 +21,29 @@ filtrar.addEventListener('input',function(){
         verProductos(filtrados);
     }
 });
+
+limpiarCarro.addEventListener('click',function(){
+    Swal.fire({
+        title: 'Está seguro que desea limpiar el carrito?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, seguro',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            cart = [];
+            guardarLocal("carritoProductos",JSON.stringify(cart));
+            carritoHTML(cart);
+            Swal.fire({
+                title: 'Borrado!',
+                icon: 'success',
+                text: 'Carrito limpiado correctamente!'
+            })
+        }
+    })
+
+})
 
 
 window.addEventListener('load',function () {

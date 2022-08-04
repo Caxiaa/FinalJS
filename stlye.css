@@ -85,3 +85,29 @@ main{
 .carrito:hover{
     transform: scale(1.1);
 }
+
+.total-carro{
+    text-align: start;
+}
+
+.h6-cart{
+    display: inline-block;
+}
+
+.trash-cart{
+    border: none;
+    background: none;
+    transition-duration: .5s;
+}
+
+.trash-cart:hover{
+    transform: scale(1.1);
+}
+
+.limpiar-carrito{
+    border: 1px solid black;
+}
+
+.limpiar-carrito:hover{
+    background: #d6d6d6;
+}

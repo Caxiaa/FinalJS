@@ -7,13 +7,5 @@ class Producto{
         this.image = image;
         this.cantidad = parseInt(cantidad) || 1;
     }
-
-    addCantidad(){
-        this.cantidad++;
-    }
-
-    subTotal(){
-        return this.precio * this.cantidad;
-    }
 }
 
