@@ -7,32 +7,17 @@ main{
     grid-template-columns:auto auto auto auto;
 }
 
-
-.products-detail{
-    border: 1px solid black;
-    margin: 10px;
-    width: 40vh;
-    text-align: center;
-    height: 50vh;
-    font-family:'Century Gothic';
-    padding: 10px;
-}
-
-
 .buy-button{
     display: inline-block;
     text-align: center;
 }
 
 .product-img{
-    display: inline-block;
-    text-align: center;
-    height: 23vh;
     transition-duration: .5s;
 }
 
 .product-img:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .not-find-text{
@@ -64,4 +49,39 @@ main{
 
 .boton-enviar:hover{
     background-color:rgb(0, 158, 21) ;
+}
+
+.carrito{
+    font-size: 30px;
+}
+
+.boton-carrito{
+    border: none;
+    background: none;
+}
+
+.carrito-container{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.carta-producto{
+    text-align: center;
+    padding-top: 50px;
+}
+
+.imagen-card{
+    height: 70%;
+}
+
+.card{
+    margin-top: 20px;
+}
+
+.carrito{
+    transition-duration: .5s;
+}
+
+.carrito:hover{
+    transform: scale(1.1);
 }
