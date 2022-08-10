@@ -42,25 +42,31 @@ const cargarProducto = (e)=>{
 }
 
 const verProductos = (lista)=>{
-    products_container.innerHTML = "";
-    for(const product of lista){
-        let div = document.createElement('div');
-        div.classList.add('card');
-        div.setAttribute("style","width:18rem;");
-        div.innerHTML = `
-            <div class="d-flex imagen-card">
-                <img src="${product.image}" class="align-self-center card-img-top product-img" alt="${product.nombre}">
-            </div>
-            <div class="card-body carta-producto">
-                <h5 class="card-title">${product.nombre}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Precio: $${product.precio}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">Stock: ${product.stock}</h6><br>
-                <button id="${product.id}" class="btn btn-outline-primary buy-button">Comprar</button>
-            </div>
-        `
-        products_container.append(div); 
-    }  
-    eventoBoton();
+
+    if(filtroMarca.value == "All"){
+        products_container.innerHTML = "";
+        for(const product of lista){
+            let div = document.createElement('div');
+            div.classList.add('card');
+            div.setAttribute("style","width:18rem;");
+            div.innerHTML = `
+                <div class="d-flex imagen-card">
+                    <img src="${product.image}" class="align-self-center card-img-top product-img" alt="${product.nombre}">
+                </div>
+                <div class="card-body carta-producto">
+                    <h5 class="card-title">${product.nombre}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Precio: $${product.precio}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Stock: ${product.stock}</h6>
+                    <p class="card-subtitle mb-2 text-muted">Id: ${product.id}</p>
+                    <button id="${product.id}" class="btn btn-outline-primary buy-button">Comprar</button>
+                </div>
+            `
+            products_container.append(div); 
+        }  
+        eventoBoton();
+    }else{
+        
+    }
 }
 
 const borrarProducto = (e)=>{
@@ -78,7 +84,14 @@ const borrarProducto = (e)=>{
         let id = e.target[0].value;
         let exists = products.find(product=>product.id == id);
         if(!exists){
-            return alert("El valor ingresado no existe!")
+            Toastify({
+                text: "❌El id ingresado no existe!",
+                className: "error",
+                gravity: "bottom",
+                style: {
+                    background: "background: linear-gradient(90deg, rgba(251,134,66,1) 24%, rgba(255,0,0,1) 76%)"
+                }
+              }).showToast();
         }
         Swal.fire({
             title: 'Está seguro de eliminar el producto?',

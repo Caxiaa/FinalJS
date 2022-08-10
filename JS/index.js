@@ -8,6 +8,7 @@ let cantidad_productos = document.getElementById('cantidad-carrito');
 let productos_carrito = document.getElementById('productos-carrito');
 let totalCarro = document.getElementById('total-carrito');
 let limpiarCarro = document.getElementById('limpiar-carro');
+let filtroMarca = document.getElementById('filtrar_marca');
 
 form.addEventListener('submit',cargarProducto);
 
@@ -44,6 +45,22 @@ limpiarCarro.addEventListener('click',function(){
     })
 
 })
+
+
+
+// fetch('productos.json')
+// .then((res)=>{
+//     return res.json();
+// }).then((data)=>{
+//     for (const product of data) {
+//         id.push(0);
+//         guardarLocal("Ids",JSON.stringify(id));
+//         let {nombre,precio,stock,image} = product;
+//         let producto = new Producto(id.length,nombre.toUpperCase(),parseFloat(precio),parseInt(stock),image);
+//         products.push(producto);
+//         guardarLocal("listaProductos",JSON.stringify(products));
+//     }
+// })
 
 
 window.addEventListener('load',function () {

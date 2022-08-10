@@ -5,6 +5,8 @@ main{
 .products-container{
     display: grid;
     grid-template-columns:auto auto auto auto;
+    padding-left: 5%;
+    padding-right: 3%;
 }
 
 .buy-button{
