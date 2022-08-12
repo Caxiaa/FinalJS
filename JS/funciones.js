@@ -41,15 +41,13 @@ const cargarProducto = (e)=>{
     }
 }
 
-const verProductos = (lista)=>{
-
-    if(filtroMarca.value == "All"){
-        products_container.innerHTML = "";
-        for(const product of lista){
-            let div = document.createElement('div');
-            div.classList.add('card');
-            div.setAttribute("style","width:18rem;");
-            div.innerHTML = `
+const verProductos = (lista) => {
+    products_container.innerHTML = "";
+    for (const product of lista) {
+        let div = document.createElement('div');
+        div.classList.add('card');
+        div.setAttribute("style", "width:18rem;");
+        div.innerHTML = `
                 <div class="d-flex imagen-card">
                     <img src="${product.image}" class="align-self-center card-img-top product-img" alt="${product.nombre}">
                 </div>
@@ -61,12 +59,9 @@ const verProductos = (lista)=>{
                     <button id="${product.id}" class="btn btn-outline-primary buy-button">Comprar</button>
                 </div>
             `
-            products_container.append(div); 
-        }  
-        eventoBoton();
-    }else{
-        
+        products_container.append(div);
     }
+    eventoBoton();
 }
 
 const borrarProducto = (e)=>{
@@ -84,7 +79,7 @@ const borrarProducto = (e)=>{
         let id = e.target[0].value;
         let exists = products.find(product=>product.id == id);
         if(!exists){
-            Toastify({
+            return Toastify({
                 text: "❌El id ingresado no existe!",
                 className: "error",
                 gravity: "bottom",

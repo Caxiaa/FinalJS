@@ -3,7 +3,7 @@ class Producto{
         this.id = id;
         this.nombre = nombre;
         this.precio = parseFloat(precio);
-        this.stock = stock;
+        this.stock = parseInt(stock);
         this.image = image;
         this.cantidad = parseInt(cantidad) || 1;
     }
