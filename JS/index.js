@@ -9,6 +9,7 @@ let productos_carrito = document.getElementById('productos-carrito');
 let totalCarro = document.getElementById('total-carrito');
 let limpiarCarro = document.getElementById('limpiar-carro');
 let filtroMarca = document.getElementById('filtrar_marca');
+let comprarCarro = document.getElementById('comprar-carrito');
 
 form.addEventListener('submit',cargarProducto);
 
@@ -22,6 +23,28 @@ filtrar.addEventListener('input',function(){
         verProductos(filtrados);
     }
 });
+
+comprarCarro.addEventListener('click',function(){
+    Swal.fire({
+        title: 'Desea comprar el carrito?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, seguro',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            cart = [];
+            guardarLocal("carritoProductos",JSON.stringify(cart));
+            carritoHTML(cart);
+            Swal.fire({
+                title: 'Comprado!',
+                icon: 'success',
+                text: 'Carrito comprado correctamente!'
+            })
+        }
+    })
+})
 
 limpiarCarro.addEventListener('click',function(){
     Swal.fire({
@@ -46,28 +69,22 @@ limpiarCarro.addEventListener('click',function(){
 })
 
 
-
-
-// fetch('productos.json')
-// .then((res)=>{
-//     return res.json();
-// }).then((data)=>{
-//     for (const product of data) {
-//         id.push(0);
-//         guardarLocal("Ids",JSON.stringify(id));
-//         let {nombre,precio,stock,image} = product;
-//         let producto = new Producto(id.length,nombre.toUpperCase(),parseFloat(precio),parseInt(stock),image);
-//         products.push(producto);
-//         guardarLocal("listaProductos",JSON.stringify(products));
-//     }
-// })
-
-
-window.addEventListener('load',function () {
+fetch('productos.json')
+    .then((res) => {
+        return res.json();
+    }).then((data) => {
+        for (const product of data) {
+            let {
+                id,
+                nombre,
+                precio, 
+                image
+            } = product;
+            let producto = new Producto(id, nombre.toUpperCase(), parseFloat(precio), image);
+            products.push(producto);
+        }
+        verProductos(products);
+    })
     obtenerLocal("carritoProductos",cart);
-    obtenerLocal("listaProductos",products);
-    obtenerLocal("Ids",id);
-    verProductos(products);
     carritoHTML(cart);
     cantidad_productos.innerHTML = cart.length;
-})

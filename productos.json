@@ -1,83 +1,83 @@
 [
     {
-        "id":"1",
+        "id":1,
         "nombre":"Mouse logitech",
         "precio": "4200",
         "stock": 14,
         "image":"https://www.qloud.ar/SITES/IMG/gaming-point-06-2021/221_20-04-2022-12-04-38-1602868547_345345_ccexpress.png"
     },
     {
-        "id":"2",
+        "id":2,
         "nombre":"Mouse Razer",
         "precio": "4000",
         "stock": 22,
         "image":"https://assets2.razerzone.com/images/pnx.assets/89b592e45a60be05a671c021f3363ac0/daessential-500x500.png"
     },
     {
-        "id":"3",
+        "id":3,
         "nombre":"Mouse Hyperx",
         "precio": "4700",
         "stock": 19,
         "image":"https://clickarequito.com.ar/wp-content/uploads/2021/08/RAID.png"
     },
     {
-        "id":"4",
+        "id":4,
         "nombre":"Mouse Redragon",
         "precio": "3800",
         "stock": 30,
         "image":"https://redragon.es/content/uploads/2021/04/COBRA.png"
     },
     {
-        "id":"5",
+        "id":5,
         "nombre":"Teclado logitech",
         "precio": "8400",
         "stock": 16,
         "image":"https://resource.logitechg.com/d_transparent.gif/content/dam/gaming/en/products/pro-keyboard/pro-clicky-hero.png"
     },
     {
-        "id":"6",
+        "id":6,
         "nombre":"Teclado razer",
         "precio": "7900",
         "stock": 19,
         "image":"https://assets2.razerzone.com/images/pnx.assets/9732ff8f142d1addf175aca151a7192d/razer-cynosa-v2-500x500.png"
     },
     {
-        "id":"7",
+        "id":7,
         "nombre":"Teclado hyperx",
         "precio": "9900",
         "stock": 12,
         "image":"https://romitech.com.gt/web/image/product.image/1110/image_1024/Teclado%20Gamer%20Mecanico%20HyperX%20Alloy%20Origins%2060%20Blanco%20con%20Rosa?unique=f5d4de3"
     },
     {
-        "id":"8",
+        "id":8,
         "nombre":"Teclado redragon",
         "precio": "8100",
         "stock": 18,
         "image":"https://redragon.es/content/uploads/2021/04/KUMARA.png"
     },
     {
-        "id":"9",
+        "id":9,
         "nombre":"Auriculares logitech",
         "precio": "7100",
         "stock": 15,
         "image":"https://resource.logitechg.com/content/dam/gaming/en/products/g733/gallery/g733-lilac-gallery-1.png"
     },
     {
-        "id":"10",
+        "id":10,
         "nombre":"Auriculares Razer",
         "precio": "7500",
         "stock": 13,
         "image":"https://assets.razerzone.com/eeimages/products/13147/razer-kraken-7-1-gallery-7.png"
     },
     {
-        "id":"11",
+        "id":11,
         "nombre":"Auriculares Hyperx",
         "precio": "8200",
         "stock": 13,
         "image":"https://www.precio-calidad.com.ar/wp-content/uploads/2021/02/HYPERX-CLOUD-FLIGHT-BLACK-WIRELESS-2.jpg"
     },
     {
-        "id":"12",
+        "id":12,
         "nombre":"Auriculares redragon",
         "precio": "7200",
         "stock": 21,

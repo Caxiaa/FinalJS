@@ -27,16 +27,12 @@ const cargarProducto = (e)=>{
     }else{
         let nombre = e.target[0].value;
         let precio = e.target[1].value;
-        let stock = e.target[2].value;
-        let image = e.target[3].value;
+        let image = e.target[2].value;
             
         form.reset();
-            
-        id.push(0);
-        guardarLocal("Ids",JSON.stringify(id));
-        let product = new Producto(id.length,nombre.toUpperCase(),parseFloat(precio),parseInt(stock),image);
+    
+        let product = new Producto(products.length+1,nombre.toUpperCase(),parseFloat(precio),image);
         products.push(product);
-        guardarLocal("listaProductos",JSON.stringify(products));
         verProductos(products);
     }
 }
@@ -54,7 +50,6 @@ const verProductos = (lista) => {
                 <div class="card-body carta-producto">
                     <h5 class="card-title">${product.nombre}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Precio: $${product.precio}</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">Stock: ${product.stock}</h6>
                     <p class="card-subtitle mb-2 text-muted">Id: ${product.id}</p>
                     <button id="${product.id}" class="btn btn-outline-primary buy-button">Comprar</button>
                 </div>
@@ -99,7 +94,6 @@ const borrarProducto = (e)=>{
             if (result.isConfirmed) {
                 let array_delete = products.filter((prod)=>prod.id != id);
                 products = array_delete;
-                guardarLocal("listaProductos",JSON.stringify(products));
                 verProductos(products);
                 Swal.fire({
                     title: 'Borrado!',
@@ -186,6 +180,7 @@ const botonBorrarProductoCarro = ()=>{
         })
     }
 }
+
 
 const subTotal = (precio,cantidad) =>{
     return precio*cantidad;
