@@ -8,7 +8,6 @@ let cantidad_productos = document.getElementById('cantidad-carrito');
 let productos_carrito = document.getElementById('productos-carrito');
 let totalCarro = document.getElementById('total-carrito');
 let limpiarCarro = document.getElementById('limpiar-carro');
-let filtroMarca = document.getElementById('filtrar_marca');
 let comprarCarro = document.getElementById('comprar-carrito');
 
 form.addEventListener('submit',cargarProducto);
@@ -25,25 +24,36 @@ filtrar.addEventListener('input',function(){
 });
 
 comprarCarro.addEventListener('click',function(){
-    Swal.fire({
-        title: 'Desea comprar el carrito?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, seguro',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-
-        if (result.isConfirmed) {
-            cart = [];
-            guardarLocal("carritoProductos",JSON.stringify(cart));
-            carritoHTML(cart);
-            Swal.fire({
-                title: 'Comprado!',
-                icon: 'success',
-                text: 'Carrito comprado correctamente!'
-            })
-        }
-    })
+    if(cart.length == 0){
+        Toastify({
+            text: "❌ No puedes comprar un carrito vacio!",
+            className: "warning",
+            gravity: "bottom",
+            style: {
+                background: "background: linear-gradient(90deg, rgba(45,34,238,1) 23%, rgba(0,212,255,1) 92%)"
+            }
+          }).showToast();
+    }else{
+        Swal.fire({
+            title: 'Desea comprar el carrito?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, seguro',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+    
+            if (result.isConfirmed) {
+                cart = [];
+                guardarLocal("carritoProductos",JSON.stringify(cart));
+                carritoHTML(cart);
+                Swal.fire({
+                    title: 'Comprado!',
+                    icon: 'success',
+                    text: 'Carrito comprado correctamente!'
+                })
+            }
+        })
+    }
 })
 
 limpiarCarro.addEventListener('click',function(){
